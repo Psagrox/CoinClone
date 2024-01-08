@@ -1,0 +1,241 @@
+@use "components";
+
+@mixin section-display {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 3rem;
+}
+
+@mixin nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 4rem;
+    border-bottom: solid 1px #ddd;
+    align-items: center;
+    margin: auto;
+}
+
+html{
+    min-width: 100vw
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav {
+    @include nav();
+    .nav-box {
+        @include nav(); 
+        max-width: 1010px;
+    }
+
+}
+
+.logo a img {
+    max-width: 15rem;
+}
+
+.sec-home{
+    display: flex;
+    align-items: center;
+    @include section-display();
+    .home-cta{
+        flex: 1;
+        max-width: 100%;
+    }
+    .cta-text{
+        color: components.$color-main;
+        font-weight: 600;
+    }
+    .home-title{
+        width: 20rem;
+        font-size: 4rem;
+        font-weight: 500;
+    }
+    .home-img {
+        padding-left: 8rem;
+    }
+}
+
+.sec-features {
+    @include section-display();
+    .intro {
+        text-align: center;
+        padding-bottom: 2rem;
+        h3 {
+            font-size: 1.8rem;
+        }
+        p {
+            font-size:  0.8rem;
+            color: #888;
+        }
+    }
+    .features {
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
+        align-items: center;
+        margin: auto;
+        .text{
+            padding: 2rem 0;
+            max-width: 40%;
+            height: 35rem;
+            .feature{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-bottom: 2rem;
+                .description {
+                    margin-left: 1rem;
+                    max-width: 30rem;
+                    .description-title {
+                        font-size: 1.25rem;
+
+                    }
+                    .description-text {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        .image {
+            padding-bottom: 5.5rem;
+            img {
+                max-width: 45rem;
+                max-height: 30rem;
+            }
+        }
+    }
+
+}
+
+.sec-benefits {
+    border-top: 1px solid #ddd;
+    @extend .sec-features, .intro;
+    .benefit-cards {
+        width: 100%;
+        padding: 0rem 2rem 2rem 2rem;
+    }
+    
+}
+
+.sec-kpis {
+    width: 100%;
+    background-color: components.$color-main;
+    color: white;
+    padding: 4rem;
+    .kpi-container {
+        max-width: 1100px;
+        margin: auto;
+    }
+    .kpi {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 500px;
+        margin: auto;
+        .number {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+        .desc{
+            font-size: 0.9rem;
+            color: #ffffffaa;
+        }
+    }
+}
+
+.sec-onboarding {
+    @extend .sec-features, .intro;
+    .steps {
+        padding: 0 0.5rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        .step-separator {
+            flex: 1;
+            border-top: 2px solid #ddd;
+            margin: 0 0.2rem;
+        }
+    }
+}
+
+.sec-footer-cta {
+    background-color: components.$color-footer;
+    padding: 5rem;
+    display: flex;
+    flex-direction: row;
+    /*background-image: url("../assets/img/cellphone.png");
+    background-repeat: no-repeat;
+    background-position: 85%;
+    background-size: 30%;*/
+    .footer {
+        max-width: 1000px;
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        .footer-cta {
+            width: 50%;
+        
+            .cta-title {
+                font-size: 2.5rem;
+                padding-bottom: 1.15rem;
+            }
+            .cta-description {
+                font-size: 1.25rem;
+                padding-bottom: 1.15rem;
+            }
+        }
+        .footer-img {
+            width: 50%;
+            img{
+                width: 25rem;
+                margin-left: 2rem;
+            }
+        }
+    }
+    
+}
+
+@media(max-width:768px){
+    .sec-home{
+        align-items: center;
+        margin-left: 5rem;
+        img {
+            display: none;
+        }
+    }
+    .sec-onboarding{
+        .steps{
+            flex-direction: column;
+            .icon-desc {
+                .title {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .sec-footer-cta{
+        text-align: center;
+        justify-content: center;
+        margin: 0;
+        img {
+            display: none;
+        }
+        .footer {
+            margin-left: 8rem;
+            text-align: center;
+            .footer-cta{
+                width: 100%;
+            }
+        }
+        
+    }
+}
